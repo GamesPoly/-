@@ -10,3 +10,8 @@ services:
       - net
     depends_on:
       - postgresql
+
+ frontend:
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
