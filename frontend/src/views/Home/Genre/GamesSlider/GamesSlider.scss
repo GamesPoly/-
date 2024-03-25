@@ -42,7 +42,7 @@
   border-radius: 50px;
   border: 2px solid var(--background-extra);
   padding: 12px 20px;
-  width: 148px;
+  // width: 148px;
 }
 
 .carousel__button {
@@ -99,7 +99,11 @@
     align-items: center;
     height: 250px;
     overflow: hidden;
-    width: 910px;
+    width: 60vw;
+    @media (max-width: 1439px) {
+      width: 100vw;
+      
+    }
     .carousel__item {
       position: absolute;
       width: 100%;
