@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup key
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "${{ secrets.DEPLOY_PRIVATE_SSH_KEY }}" > "$HOME/.ssh/key"
+      - run: chmod 600 "$HOME/.ssh/key"
+
+      # send all files
+      - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . root@${{env.SERVER_IP}}:/var/www/polygames/
+
+      # install dependencies
+      - run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no root@${{env.SERVER_IP}} "cd /var/www/polygames"
+
+      # Build and run Docker Compose
+      - name: Build and Run Backend
+        run: |
+          ssh -i ~/.ssh/id_rsa root@${{env.SERVER_IP}} "cd /var/www/polygames; docker-compose -d -f docker-compose.yml build"

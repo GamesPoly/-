@@ -1,6 +1,7 @@
 services:
   postgresql:
     container_name: polygames-postgresql
+    context: ./backend
     image: postgres
     ports:
       - 5432:5432
@@ -25,7 +26,7 @@ services:
   server:
     container_name: polygames-server
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
       args:
         - APP_DIR=$APP_DIR
@@ -47,6 +48,7 @@ services:
 
   migrations:
     container_name: polygames-migrations
+    context: ./backend
     image: migrate/migrate
     depends_on:
       postgresql:
@@ -56,6 +58,18 @@ services:
     command: -database postgres://${DB_USERNAME}:${DB_PASSWORD}@postgresql:${DB_PORT}/${DB_DATABASE}?sslmode=disable -path /opt/polygames/migrations up
     volumes:
       - ./database/migrations:/opt/polygames/migrations
+
+  frontend:
+    container_name: polygames-frontend
+    command: "npm run build"
+    environment:
+      - NODE_ENV=production
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    networks:
+      - net
 
 networks:
   net:
