@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './GamesSlider.scss';
 import cover1 from '@assets/cover-game1.png'
 import cover2 from '@assets/cover-game2.png'
@@ -38,9 +38,11 @@ const GamesSlider = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [selectDot, setSelectedDot] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
 
   const moveToSelected = (index) => {
     setSelectedIdx(index);
+    setSelectedDot(index+1)
   };
 
   const prevSlide = () => {
@@ -70,6 +72,79 @@ const GamesSlider = () => {
       setIsButtonDisabled(false);
     }, 500);
   };
+
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const isDragging = useRef(false);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    isDragging.current = true;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+    const currentX = e.touches[0].clientX;
+    setDragOffset(currentX - touchStartX.current);
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
+    handleDragEnd();
+    if (!touchStartX.current || !touchEndX.current) return;
+    const deltaX = touchStartX.current - touchEndX.current;
+
+    if (deltaX > 50) {
+      nextSlide(); 
+    } else if (deltaX < -50) {
+      prevSlide(); 
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const handleMouseStart = (e) => {
+    touchStartX.current = e.clientX; 
+    isDragging.current = true; 
+};
+
+const handleMouseMove = (e) => {
+    if (!isDragging.current) return; 
+    touchEndX.current = e.clientX; 
+    setDragOffset(e.clientX - touchStartX.current); 
+};
+
+const handleMouseEnd = () => {
+    isDragging.current = false;
+    handleDragEnd(); 
+
+    if (!touchStartX.current || !touchEndX.current) return; 
+    const deltaX = touchStartX.current - touchEndX.current; 
+
+    if (deltaX > 50) {
+        nextSlide(); 
+    } else if (deltaX < -50) {
+        prevSlide(); 
+    }
+
+    touchStartX.current = null; 
+    touchEndX.current = null;
+};
+
+
+  const handleDragEnd = () => {
+    const threshold = 100;
+
+    if (dragOffset > threshold) {
+      prevSlide();
+    } else if (dragOffset < -threshold) {
+      nextSlide();
+    }
+    setDragOffset(0);
+  };
+
+
   const classImage = (idx) => {
         return idx === selectedIdx ? 'carousel__item carousel__item--selected' : 
             idx === selectedIdx - 1 || (selectedIdx === 0 && idx === images.length - 1) ? 'carousel__item carousel__item--prev' : 
@@ -81,8 +156,12 @@ const GamesSlider = () => {
             'carousel__item carousel__item--simple'
   }
 
+  
+
   return (
-    <div className="carousel">
+    <div className="carousel"
+    
+      >
       <div className="carousel__head">
         <p className="carousel__ganre">Приключения</p>
         <div className="carousel__details">
@@ -124,10 +203,20 @@ const GamesSlider = () => {
           </div>
         </div>
       </div>
-      <ul className="carousel__list">
+      <ul className="carousel__list" id='carousel'
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseStart}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseEnd}
+      onMouseLeave={() => isDragging.current && handleMouseEnd()
+      }>
         {images.map((image, idx) => (
-          <div key={idx} className={classImage(idx)}>
-            <img className="carousel__image" src={image.url} alt={`Slide ${idx + 1}`} />
+          <div key={idx} className={classImage(idx)} onClick={() => moveToSelected(idx)}
+          style={idx === selectedIdx ? { transform: `translateX(${dragOffset}px)` } : {}}
+          >
+            <img className="carousel__image" src={image.url} alt={`Slide ${idx + 1}`}/>
           </div>
         ))}
       </ul>
