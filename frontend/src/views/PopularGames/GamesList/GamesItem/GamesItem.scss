@@ -1,6 +1,6 @@
 @import '@/variables.scss';
 
-.popular-list__card {
+.games-list__card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,21 +10,23 @@
     margin-top: 40px;
 }
 
-.popular-list__card-cover {
+.games-list__card-cover {
     width: 100%;
     object-fit: cover;
 }
 
-.popular-list__card-text {
+.games-list__card-text {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.popular-list__card-title {
+.games-list__card-title {
     font-size: 1.5rem;
+    font-weight: 500;
 }
 
-.popular-list__card-desc {
+.games-list__card-desc {
     font-size: 1.25rem;
+    font-weight: 400;
 }

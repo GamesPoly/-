@@ -2,113 +2,107 @@ import React from 'react';
 import './PopularGames.scss'
 import GameBanner from './GameBanner/GameBanner';
 import cover1 from '@assets/cover-game4.png'
-import PopularList from './PopularList/PopularList';
+import GamesList from './GamesList/GamesList';
+import GenresList from './GenresList/GenresList';
 
-const gamesCollections = [{
-    title: 'Лучшие представители своих жанров',
+const PopularOfMonth = [{
+    title: 'Популярное за месяц',
     games: [
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         }
     ]
 }, 
-{
-    title: 'Самое популярное в последнее время',
+]
+
+const PopularNew = [{
+    title: 'Популярные новинки',
     games: [
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
+            name: 'Simulation',
             desc: 'Платформер-головоломка с уровнями на логику и смека...',
             cover: cover1
         },
-        {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
-            cover: cover1
-        },
-        {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
-            cover: cover1
-        }
     ]
 }, 
-{
-    title: 'Специально для тебя',
-    games: [
+]
+
+
+const PopularGenres = [{
+    title: 'Популярные жанры',
+    genres: [
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
         },
         {
-            name: 'Simulation 23/3',
-            desc: 'Платформер-головоломка с уровнями на логику и смека...',
+            name: 'Simulation',
             cover: cover1
-        }
+        },
     ]
-}]
+}, 
+]
+
+
+
 
 function PopularGames() {
 
@@ -117,7 +111,9 @@ function PopularGames() {
         <main className="popular-games">
             <div className="popular-games__wrapper">
                 <GameBanner />
-                {gamesCollections.map((list) => <PopularList title={list.title} games={list.games} key={list.title}/>)}
+                {PopularOfMonth.map((list) => <GamesList title={list.title} games={list.games} size={'small'} key={list.title}/>)}
+                {PopularGenres.map((list) => <GenresList title={list.title} genres={list.genres} key={list.title}/>)}
+                {PopularNew.map((list) => <GamesList title={list.title} games={list.games} size={'big'} key={list.title}/>)}
             </div>
         </main>
     );
