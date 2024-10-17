@@ -43,7 +43,8 @@
     "react-router-dom": "^6.20.0",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "swiper": "^11.1.14"
   },
   "keywords": []
 }

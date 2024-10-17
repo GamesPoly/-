@@ -13,7 +13,7 @@ import Registration from "../views/Registration/Registration";
 import MenuWindow from "./MenuWindow/MenuWindow";
 import Footer from "./Footer/Footer";
 import NotFound from "./NotFound/NotFound";
-
+import Game from "../views/Game/Game";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,28 +49,29 @@ const App = () => {
   };
 
   return (
-      <div className="app">
-        {isMenuOpen && <div className="jumbo jumbo--dark"></div>}
-        <BrowserRouter>
-          <div className={isMenuOpen ? "screen screen--left" : "screen"}>
-            <Header openMenu={openMenu} showHeader={showHeader} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/games" element={<Catalog />} />
-              <Route path="/teams" element={<TeamsPage />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/post-form" element={<PostForm />} />
-              <Route path="/popular-games" element={<PopularGames />} />
-              {/* 404 */}
-              <Route path="*" element={ <NotFound/> }/>
-            </Routes>
-            <Footer />
-          </div>
-          <MenuWindow isOpen={isMenuOpen} closeMenu={closeMenu} />
-        </BrowserRouter>
-      </div>
+    <div className="app">
+      {isMenuOpen && <div className="jumbo jumbo--dark"></div>}
+      <BrowserRouter>
+        <div className={isMenuOpen ? "screen screen--left" : "screen"}>
+          <Header openMenu={openMenu} showHeader={showHeader} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/games" element={<Catalog />} />
+            <Route path="/teams" element={<TeamsPage />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/post-form" element={<PostForm />} />
+            <Route path="/popular-games" element={<PopularGames />} />
+            <Route path="/games/:id" element={<Game />} />
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </div>
+        <MenuWindow isOpen={isMenuOpen} closeMenu={closeMenu} />
+      </BrowserRouter>
+    </div>
   );
 };
 

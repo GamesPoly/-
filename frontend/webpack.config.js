@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash].js",
+    publicPath: "/"
   },
   devServer: {
     port: 3000,
@@ -23,6 +24,7 @@ module.exports = {
       "@hooks": path.resolve(__dirname, "src/hooks"),
       "@context": path.resolve(__dirname, "src/context"),
       "@types": path.resolve(__dirname, "src/types"),
+      "@views": path.resolve(__dirname, "src/views"), 
     },
   },
 
