@@ -100,7 +100,11 @@
     align-items: center;
     height: 250px;
     overflow: hidden;
-
+    width: 60vw;
+    @media (max-width: 1439px) {
+      width: 100vw;
+      
+    }
     .carousel__item {
       cursor: pointer;
       position: absolute;
