@@ -1,0 +1,36 @@
+@import '../../../variables';
+.input-block {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-block__input {
+    display: block;
+    padding: 24px 29px 22px;
+    height: 60px;
+    margin: auto;
+    font-size: 20px;
+    color: var(--text-primary);
+    border: none;
+    background: none;
+    border-radius: 30px;
+    background: var(--background-secondary);
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+    outline: 1px solid transparent;
+    &:focus {
+        outline: 1px solid $white-300;
+    }
+    &::placeholder {
+        color: var(--text-secondary);
+    }
+}
+
+.input-block__label {
+    display: block;
+    margin-left: 15px;
+    text-align: left;
+    margin-bottom: 10px;
+}
