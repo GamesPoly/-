@@ -4,9 +4,16 @@ import styles from './AuthFormInput.module.scss'
 interface EmailInputProps {
     onInputChange: (email: string) => void
     title: string
+    type: string
+    name?: string
 }
 
-const AuthFormInput: FC<EmailInputProps> = ({ onInputChange, title }) => {
+const AuthFormInput: FC<EmailInputProps> = ({
+    onInputChange,
+    title,
+    type,
+    name,
+}) => {
     const [email, setEmail] = useState('')
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +28,8 @@ const AuthFormInput: FC<EmailInputProps> = ({ onInputChange, title }) => {
                 {title}
             </label>
             <input
-                type="email"
-                name="email"
+                type={type}
+                name={name || type}
                 className={styles['input-block__input']}
                 placeholder={title}
                 value={email}

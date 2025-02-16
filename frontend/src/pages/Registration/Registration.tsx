@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
 import styles from './Registration.module.scss'
-import EmailInput from '../Auth/EmailInput/EmailInput'
-import PasswordInput from '../Auth/PasswordInput/PasswordInput'
 import git from '../../shared/assets/git-icon.svg'
 import google from '../../shared/assets/google-icon.svg'
 import vk from '../../shared/assets/vk-icon.svg'
 import AuthFormInput from '../Auth/AuthFormInput/AuthFormInput'
+import { Link } from 'react-router-dom'
 
 function Registration() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordRepeat, setPasswordRepeat] = useState('')
 
-    const handleEmailChange = (newEmail: string) => {
-        setEmail(newEmail)
+    const handleEmailChange = (newEmailValue: string) => {
+        setEmail(newEmailValue)
+        console.log(newEmailValue)
     }
 
-    const handlePasswordChange = (newPassword: string) => {
-        setPassword(newPassword)
+    const handlePasswordChange = (newPasswordValue: string) => {
+        setPassword(newPasswordValue)
     }
 
-    const handlePasswordRepeatChange = (passwordRepeat: string) => {
-        setPasswordRepeat(passwordRepeat)
+    const handlePasswordRepeatChange = (passwordRepeatValue: string) => {
+        setPasswordRepeat(passwordRepeatValue)
     }
+
+    const sendForm = () => {}
 
     return (
         <main className={styles['registration__wrapper']}>
@@ -33,17 +35,24 @@ function Registration() {
                         <AuthFormInput
                             onInputChange={handleEmailChange}
                             title="Email пользователя"
+                            type="email"
                         />
                         <AuthFormInput
                             onInputChange={handlePasswordChange}
                             title="Пароль"
+                            type="password"
                         />
                         <AuthFormInput
                             onInputChange={handlePasswordRepeatChange}
                             title="Подтверждение пароля"
+                            type="password"
+                            name="password-repeat"
                         />
                         <div className={styles['registration__btns']}>
-                            <div className={styles['registration__btn']}>
+                            <button
+                                className={styles['registration__btn']}
+                                onClick={() => sendForm()}
+                            >
                                 <p>Зарегистрироваться</p>
                                 <div className={styles['btn__circle']}>
                                     <svg
@@ -60,35 +69,43 @@ function Registration() {
                                         />
                                     </svg>
                                 </div>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
+                <div className={styles['other__line']}></div>
                 <div className={styles['other__registration__btns']}>
-                    <hr></hr>
                     <p>Зарегистрироваться через:</p>
                     <div className={styles['btns']}>
-                        <img
-                            src={vk}
-                            alt=""
-                            className={styles['aside-settings__icon']}
-                        />
-                        <img
-                            src={google}
-                            alt=""
-                            className={styles['aside-settings__icon']}
-                        />
-                        <img
-                            src={git}
-                            alt=""
-                            className={styles['aside-settings__icon']}
-                        />
+                        <a href="#">
+                            <img
+                                src={vk}
+                                alt=""
+                                className={styles['aside-settings__icon']}
+                            />
+                        </a>
+                        <a href="#">
+                            <img
+                                src={google}
+                                alt=""
+                                className={styles['aside-settings__icon']}
+                            />
+                        </a>
+                        <a href="#">
+                            <img
+                                src={git}
+                                alt=""
+                                className={styles['aside-settings__icon']}
+                            />
+                        </a>
                     </div>
                 </div>
             </form>
-            <div className={styles['link__registr']}>
+            <div className={styles['to-register-block']}>
                 <h2>В первый раз в PolyGames?</h2>
-                <p>Создать аккаунт</p>
+                <Link to="/auth" className={styles['to-register-block__link']}>
+                    Создать аккаунт
+                </Link>
             </div>
         </main>
     )
