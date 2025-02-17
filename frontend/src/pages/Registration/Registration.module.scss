@@ -1,16 +1,35 @@
 @import '../../variables';
+
+.registration__wrapper {
+    padding-top: 100px;
+    padding-bottom: 108px;
+}
+
 .registration__form {
     text-align: center;
     background-color: var(--background-detailed);
-    width: 900px;
-    margin: 1% auto;
+    width: 874px;
+    margin: 40px auto 40px;
     border-radius: 20px;
-    padding: 80px 0px 10px;
+    padding-top: 100px;
+
+    .registration__form-main {
+        display: flex;
+        justify-content: center;
+
+        .input__fields-block {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 650px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+    }
 }
 
 .registration__btns {
-    margin: 40px auto;
-    margin-left: 12%;
+    margin-top: 10px;
     display: flex;
     align-items: center;
 }
@@ -20,34 +39,45 @@
     color: #ffffff;
     display: flex;
     align-items: center;
-    border: 2px solid --primary-color;
+    border: 2px solid var(--primary-color);
     border-radius: 25px;
-    padding: 5px 7px;
-    margin-right: 20px;
+    padding: 5px 7px 5px 20px;
+    height: 50px;
+    cursor: pointer;
+
+    &:hover {
+        .btn__circle {
+            background-color: $white-100;
+
+            path {
+                fill: var(--primary-color);
+            }
+        }
+    }
 }
 
 .btn__circle {
-    background-color: --primary-color;
+    background-color: var(--primary-color);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 100px;
     height: 30px;
     width: 30px;
-    margin-left: 10px;
-    transition: all 0.15s ease;
+    margin-left: 30px;
+    transition: all 0.3s ease;
     cursor: pointer;
-    &:hover {
-        background-color: $white-100;
-        & .last-update__arrow path {
-            fill: --primary-color;
-        }
-    }
 }
 
 .other__registration__btns {
-    padding: 30px 100px;
+    padding: 40px 111px;
     text-align: left;
+}
+
+.other__line {
+    width: 817px;
+    border-top: 1px solid #aeaeae;
+    margin: 0 auto;
 }
 
 p {
@@ -56,7 +86,10 @@ p {
 
 .btns {
     padding-top: 40px;
-    text-align: center;
+    margin-left: 160px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
 }
 
 h1 {
@@ -75,19 +108,22 @@ h1 {
     margin: 0 auto;
 }
 
-img:not(:first-child) {
-    margin-left: 20px;
+img.aside-settings__icon {
+    margin-left: 0;
 }
 
-.link__registr {
+.to-register-block {
     text-align: center;
-    margin: 50px 0px;
+    margin: 40px 0 0;
 }
 
-.link__registr p {
-    padding-top: 20px;
+.to-register-block .to-register-block__link {
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
 }
 
-.link__registr h2 {
+.to-register-block h2 {
     font-size: 32px;
 }
