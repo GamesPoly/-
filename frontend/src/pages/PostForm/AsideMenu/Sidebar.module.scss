@@ -3,18 +3,19 @@
 .post-form__sidebar {
     display: flex;
     flex-direction: column;
+    width: 266px;
 
     .sidebar__decoration {
         max-width: 21px;
+        margin-bottom: 0.3rem;
     }
 
     .sidebar__btn {
         font-size: 1.5rem;
-        padding-top: 0.5rem;
+        padding: 0.5rem 0 0;
         text-align: start;
         text-decoration: none;
         border: none;
-        color: inherit;
         background-color: transparent;
         color: var(--text-secondary);
         transition: 0.5s;
@@ -26,11 +27,10 @@
 
         &_active {
             color: var(--text-primary);
-            padding-top: 0.5rem;
+            padding: 0.5rem 0 0;
             text-align: start;
             border: none;
             font-size: 1.5rem;
-            color: inherit;
             background-color: transparent;
         }
     }
