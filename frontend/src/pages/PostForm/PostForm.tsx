@@ -1,6 +1,7 @@
-import React, { useState, ChangeEvent, useRef, MutableRefObject } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import styles from './PostForm.module.scss'
 import { Sidebar } from './AsideMenu/Sidebar'
+import { FileInputArea } from './components/FileInputArea'
 
 interface Platforms {
     windows: boolean
@@ -22,8 +23,6 @@ interface ContactInfo {
     contacts: string
 }
 
-interface Genres {}
-
 interface SidebarProps {
     activeSection: string
     setActiveSection: (section: string) => void
@@ -43,6 +42,7 @@ function PostForm() {
     const [keywords, setKeywords] = useState<string>('')
     const [tags, setTags] = useState<string>('')
 
+    // TODO: переделать состояния в соотстветствии с бэкендом и уже потом при необходимости разбить всё на более мелкие компоненты и кастомные хуки
     const [platforms, setPlatforms] = useState<Platforms>({
         windows: false,
         macos: false,
@@ -64,22 +64,27 @@ function PostForm() {
     })
 
     const [genres, setGenres] = useState<string>('')
-
     const [mainGenre, setMainGenre] = useState<string>('')
     const [playersNumber, setPlayersNumber] = useState<string>('')
     const [playersCount, setPlayersCount] = useState<string>('')
     const [gameAwards, setGameAwards] = useState<string>('')
 
-    const coverFileInputRef: MutableRefObject<null | HTMLInputElement> =
-        useRef<null | HTMLInputElement>(null)
-    const [coverFileInputOnHover, setCoverFileInputOnHover] =
-        useState<boolean>(false)
-    const [coverFileInputFilled, setCoverFileInputFilled] =
-        useState<boolean>(false)
+    const [iconFile, setIconFile] = useState<FileList | null>(null)
+    const [coverFile, setCoverFile] = useState<FileList | null>(null)
+    const [screenshotFiles, setScreenshotFiles] = useState<FileList | null>(
+        null
+    )
+    const [trailerFile, setTrailerFile] = useState<FileList | null>(null)
 
     const handleProceed = (sectionId: number) => {
         setActiveSectionId(sectionId)
     }
+
+    const handleFileInputChange =
+        (setState: React.Dispatch<React.SetStateAction<FileList | null>>) =>
+        (files: FileList | null) => {
+            setState(files)
+        }
 
     const handleInputChange =
         (setState: React.Dispatch<React.SetStateAction<string>>) =>
@@ -272,7 +277,7 @@ function PostForm() {
                             </div>
                             <div className={styles['element__line-input']}>
                                 <label
-                                    htmlFor="cpu"
+                                    htmlFor="gpu"
                                     className={styles['element__label']}
                                 >
                                     Видеокарта (GPU)
@@ -281,12 +286,12 @@ function PostForm() {
                                     onChange={handleInputChange(setTags)}
                                     className={styles['element__input']}
                                     type="text"
-                                    id="cpu"
+                                    id="gpu"
                                 />
                             </div>
                             <div className={styles['element__line-input']}>
                                 <label
-                                    htmlFor="cpu"
+                                    htmlFor="hard-disk-space"
                                     className={styles['element__label']}
                                 >
                                     Свободное место на жестком диске
@@ -295,12 +300,12 @@ function PostForm() {
                                     onChange={handleInputChange(setTags)}
                                     className={styles['element__input']}
                                     type="text"
-                                    id="cpu"
+                                    id="hard-disk-space"
                                 />
                             </div>
                             <div className={styles['element__line-input']}>
                                 <label
-                                    htmlFor="cpu"
+                                    htmlFor="os"
                                     className={styles['element__label']}
                                 >
                                     Операционная система
@@ -309,12 +314,12 @@ function PostForm() {
                                     onChange={handleInputChange(setTags)}
                                     className={styles['element__input']}
                                     type="text"
-                                    id="cpu"
+                                    id="os"
                                 />
                             </div>
                             <div className={styles['element__line-input']}>
                                 <label
-                                    htmlFor="cpu"
+                                    htmlFor="additional-req"
                                     className={styles['element__label']}
                                 >
                                     Дополнительные требования*
@@ -323,7 +328,7 @@ function PostForm() {
                                     onChange={handleInputChange(setTags)}
                                     className={styles['element__input']}
                                     type="text"
-                                    id="cpu"
+                                    id="additional-req"
                                 />
                             </div>
                             <p
@@ -375,10 +380,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="windows"
+                                    id="shooters"
                                 />
                                 <label
-                                    htmlFor="windows"
+                                    htmlFor="shooters"
                                     className={styles['element__label']}
                                 >
                                     Шутеры
@@ -390,10 +395,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="macos"
+                                    id="card"
                                 />
                                 <label
-                                    htmlFor="macos"
+                                    htmlFor="card"
                                     className={styles['element__label']}
                                 >
                                     Карточные
@@ -405,10 +410,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="strategies"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="strategies"
                                     className={styles['element__label']}
                                 >
                                     Стратегии
@@ -420,10 +425,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="adventures"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="adventures"
                                     className={styles['element__label']}
                                 >
                                     Приключения
@@ -435,10 +440,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="role"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="role"
                                     className={styles['element__label']}
                                 >
                                     Ролевые
@@ -450,10 +455,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="pazzles"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="pazzles"
                                     className={styles['element__label']}
                                 >
                                     Пазлы
@@ -465,10 +470,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="sport"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="sport"
                                     className={styles['element__label']}
                                 >
                                     Спорт
@@ -480,10 +485,10 @@ function PostForm() {
                                         styles['element__input-checkbox']
                                     }
                                     type="checkbox"
-                                    id="linux"
+                                    id="actions"
                                 />
                                 <label
-                                    htmlFor="linux"
+                                    htmlFor="actions"
                                     className={styles['element__label']}
                                 >
                                     Экшены
@@ -491,7 +496,7 @@ function PostForm() {
                             </div>
                             <div className={styles['element__line-input']}>
                                 <label
-                                    htmlFor="developers"
+                                    htmlFor="main-genre"
                                     className={styles['element__label']}
                                 >
                                     Основной жанр
@@ -500,7 +505,7 @@ function PostForm() {
                                     onChange={handleInputChange(setTags)}
                                     className={styles['element__input']}
                                     type="text"
-                                    id="developers"
+                                    id="main-genre"
                                 />
                             </div>
                         </div>
@@ -588,11 +593,12 @@ function PostForm() {
                                 каталоге. Размер — 512 × 512 пикселей. Формат —
                                 PNG.
                             </p>
-                            <div
-                                className={`${styles['drag-and-drop-area']} ${styles['drag-and-drop-area-min']}`}
-                            >
-                                <input type="file" />
-                            </div>
+                            <FileInputArea
+                                onChangeFileInput={handleFileInputChange(
+                                    setIconFile
+                                )}
+                                small={true}
+                            />
                         </div>
                         <div className={styles['post-form__element']}>
                             <h2 className={styles['element__header']}>
@@ -603,83 +609,11 @@ function PostForm() {
                                 на странице игры. Размер — 800 × 470 пикселей.
                                 Формат — PNG.
                             </p>
-                            <div
-                                className={`${styles['drag-and-drop-area']} ${coverFileInputOnHover ? styles['drag-and-drop-area-hover'] : null}`}
-                                onClick={() =>
-                                    coverFileInputRef.current?.click()
-                                }
-                                onDragOver={(event) => {
-                                    event.stopPropagation()
-                                    event.preventDefault()
-                                    setCoverFileInputOnHover(true)
-                                }}
-                                onDragLeave={() =>
-                                    setCoverFileInputOnHover(false)
-                                }
-                                onDrop={(event) => {
-                                    event.preventDefault()
-                                    setCoverFileInputOnHover(false)
-                                    if (coverFileInputRef.current) {
-                                        coverFileInputRef.current!.files =
-                                            event.dataTransfer.files
-                                    }
-                                    setCoverFileInputFilled(true)
-                                }}
-                            >
-                                <div
-                                    className={
-                                        styles['drag-and-drop-area__text']
-                                    }
-                                >
-                                    {coverFileInputFilled ? (
-                                        <div
-                                            className={
-                                                styles[
-                                                    'drag-and-drop-area__filename'
-                                                ]
-                                            }
-                                        >
-                                            {
-                                                coverFileInputRef.current
-                                                    ?.files?.[0]?.name
-                                            }
-                                            <p
-                                                onClick={(event) => {
-                                                    event.stopPropagation()
-                                                    if (
-                                                        coverFileInputRef.current
-                                                    ) {
-                                                        coverFileInputRef.current!.value =
-                                                            ''
-                                                    }
-                                                    setCoverFileInputFilled(
-                                                        false
-                                                    )
-                                                }}
-                                            >
-                                                &times;
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <p>
-                                            <span>Выберите файл</span> или
-                                            перетащите его сюда
-                                        </p>
-                                    )}
-                                </div>
-                                <input
-                                    onChange={(event) => {
-                                        if (coverFileInputRef.current) {
-                                            coverFileInputRef.current!.files =
-                                                event.target.files
-                                        }
-                                        setCoverFileInputFilled(true)
-                                    }}
-                                    type="file"
-                                    ref={coverFileInputRef}
-                                    hidden
-                                />
-                            </div>
+                            <FileInputArea
+                                onChangeFileInput={handleFileInputChange(
+                                    setCoverFile
+                                )}
+                            />
                         </div>
                         <div className={styles['post-form__element']}>
                             <h2 className={styles['element__header']}>
@@ -690,9 +624,11 @@ function PostForm() {
                                 каталоге. Размер — 512 × 512 пикселей. Формат —
                                 PNG.
                             </p>
-                            <div className={styles['drag-and-drop-area']}>
-                                <input type="file" />
-                            </div>
+                            <FileInputArea
+                                onChangeFileInput={handleFileInputChange(
+                                    setScreenshotFiles
+                                )}
+                            />
                         </div>
                         <div className={styles['post-form__element']}>
                             <h2 className={styles['element__header']}>
@@ -706,9 +642,11 @@ function PostForm() {
                                 внимания пользователей. <br />
                                 Соотношение сторон — 16 : 9. Формат — MP4.
                             </p>
-                            <div className={styles['drag-and-drop-area']}>
-                                <input type="file" />
-                            </div>
+                            <FileInputArea
+                                onChangeFileInput={handleFileInputChange(
+                                    setTrailerFile
+                                )}
+                            />
                         </div>
                         <button
                             onClick={() => handleProceed(3)}
