@@ -1,0 +1,25 @@
+.link {
+    margin-left: auto;
+    margin-top: 45px;
+    background-color: #ff5731;
+    display: flex;
+    align-items: center;
+    border: none;
+    color: white;
+    border-radius: 100px;
+    width: fit-content;
+    height: 50px;
+    padding-right: 20px;
+    text-decoration: none;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+
+    img {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+}

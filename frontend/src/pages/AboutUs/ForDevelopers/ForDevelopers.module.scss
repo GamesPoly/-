@@ -28,27 +28,4 @@
         text-align: center;
         margin-top: 40px;
     }
-    &__button {
-        margin-left: auto;
-        margin-top: 45px;
-        background-color: #ff5731;
-        display: flex;
-        align-items: center;
-        border: none;
-        font-size: inherit;
-        font-family: inherit;
-        color: white;
-        border-radius: 100px;
-        width: fit-content;
-        height: 50px;
-        font-weight: 900;
-        padding-right: 20px;
-        text-decoration: none;
-        img {
-            height: 40px;
-            width: 40px;
-            margin-right: 10px;
-            margin-left: 5px;
-        }
-    }
 }
