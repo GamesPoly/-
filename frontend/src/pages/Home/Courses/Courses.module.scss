@@ -1,0 +1,45 @@
+@import '@/variables.scss';
+.courses {
+    margin-top: 100px;
+}
+
+.courses__header {
+    width: 880px;
+}
+
+.courses__header_up {
+    font-size: 68px;
+}
+
+.courses__header_down {
+    font-size: 68px;
+    text-align: right;
+}
+.courses__descryption {
+    background-repeat: no-repeat;
+    height: 540px;
+}
+
+.courses__descryption-card {
+    width: 480px;
+    // margin: 150px 0 0 20px;
+    background-color: rgb(65, 48, 48);
+    border-radius: 8px;
+}
+
+.courses__descryption-card h3 {
+    font-size: 38px;
+    margin: 24px 20px;
+}
+
+.courses__descryption-card p {
+    margin: 24px 25px;
+    font-size: 24px;
+    line-height: 1.5;
+    text-wrap: balance;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
