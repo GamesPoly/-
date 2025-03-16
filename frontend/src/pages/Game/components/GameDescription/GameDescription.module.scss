@@ -1,0 +1,53 @@
+@import '../../Game.module';
+
+.description {
+    @include flex-column;
+    gap: 35px;
+    padding: 40px;
+    background-color: var(--background-detailed);
+    border-radius: 42px;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 40px;
+    }
+
+    &__column {
+        @include flex-column;
+        gap: 40px;
+    }
+
+    &__text {
+        @include grey-card;
+        border-radius: 30px;
+        gap: 7px;
+        line-height: 34.68px;
+
+        &--second {
+            max-width: 570px;
+        }
+    }
+
+    &__title {
+        font-size: 68px;
+        font-weight: 500;
+
+        &--seconary {
+            font-size: 38px;
+        }
+    }
+
+    &__pic1 {
+        margin-left: 0 !important;
+        max-height: 280px;
+    }
+
+    &__pic2 {
+        max-height: 220px;
+    }
+
+    &__list {
+        color: var(--text-detailed);
+    }
+}

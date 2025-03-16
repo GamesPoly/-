@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "jsx": "react",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "paths": {
+            "@assets/*": ["assets/*"],
+            "@hooks/*": ["hooks/*"],
+            "@components/*": ["components/*"],
+            "@context/*": ["context/*"],
+            "@types/*": ["types/*"]
+        }
+    },
+    "include": ["src/**/*", "src/custom.d.ts"],
+    "exclude": ["node_modules", "dist"]
+}

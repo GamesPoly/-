@@ -1,0 +1,286 @@
+@import '../../variables';
+
+.teams__wrapper {
+    padding: 0 15px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-detailed);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 75px 75px;
+    border-radius: 40px;
+    @media (max-width: 1100px) {
+        text-align: center;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    @media (max-width: 701px) {
+        text-align: left;
+    }
+}
+
+.text {
+    @media (max-width: 1100px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 85%;
+    }
+}
+
+.first__h1 {
+    margin-left: 0;
+    font-size: 96px;
+    transition: all 0.5s ease;
+
+    @media (max-width: 701px) {
+        font-size: 24px;
+    }
+}
+
+.second__h1 {
+    margin-left: 175px;
+    font-size: 96px;
+
+    @media (max-width: 701px) {
+        font-size: 24px;
+        margin-left: 46px;
+    }
+}
+
+.commands__p {
+    margin-top: 80px;
+    width: 75%;
+    @media (max-width: 1100px) {
+        width: unset;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 701px) {
+        font-size: 16px;
+        margin-top: 16px;
+    }
+}
+
+.photo {
+    border-radius: 40px;
+    @media (max-width: 1100px) {
+        display: none;
+    }
+}
+
+.popular__teams {
+    text-align: center;
+    margin-top: 75px;
+}
+
+.pop__teams__h2 {
+    margin-bottom: 25px;
+    font-size: 64px;
+    @media (max-width: 830px) {
+        font-size: 24px;
+        text-align: left;
+    }
+}
+
+.teams__photos {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 370px));
+    align-items: start;
+    justify-content: center;
+    column-gap: 70px;
+    row-gap: 80px;
+    @media (max-width: 1100px) {
+        column-gap: 40px;
+        row-gap: 20px;
+        justify-content: center;
+        align-items: unset;
+    }
+
+    @media (max-width: 830px) {
+        justify-content: unset;
+        display: flex;
+        margin: 0 auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        width: 100%;
+        max-width: 360px;
+    }
+}
+
+.teams__team {
+    scroll-snap-align: start;
+    flex: none;
+    width: 100%;
+    max-width: 360px;
+    img {
+        width: 100%;
+    }
+}
+
+.buttons__wrapper {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+    border: 0.5px solid #cacaca;
+    border-radius: 24px;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 10px;
+
+    @media (min-width: 830px) {
+        display: none;
+    }
+}
+
+.scroll__button {
+    background-color: #cacaca;
+    border: none;
+    outline: none;
+    padding: 0;
+    border-radius: 5px;
+    width: 5px;
+    height: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+
+.scroll__button.active {
+    background-color: var(
+        --accent-color
+    ); /* Задайте цвет для активной кнопки */
+    width: 10px;
+    color: var(--text-on-active-color); /* Если нужен другой цвет текста */
+    font-weight: bold;
+}
+
+.down__banner {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-detailed);
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-top: 75px;
+    padding: 50px 75px;
+    border-radius: 40px;
+    @media (max-width: 750px) {
+        align-items: center;
+        padding: 30px;
+    }
+}
+
+.first__block {
+    display: flex;
+    flex-direction: row;
+}
+
+.down__photo {
+    align-self: flex-end;
+}
+
+.person__img {
+    width: 206px;
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.down__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 75px;
+    @media (max-width: 1200px) {
+        margin: 0;
+        width: unset;
+    }
+}
+
+.down__text p {
+    font-size: 38px;
+    line-height: 67px;
+    @media (max-width: 1200px) {
+        width: unset;
+        font-weight: 500;
+    }
+    @media (max-width: 750px) {
+        font-size: 16px;
+        line-height: 200%;
+    }
+}
+
+.down__text h1 {
+    @media (max-width: 1200px) {
+        width: unset;
+    }
+    @media (max-width: 750px) {
+        font-size: 24px;
+    }
+}
+
+.down__text h1:nth-child(5) {
+    font-size: 40px;
+    @media (max-width: 750px) {
+        font-size: 16px;
+    }
+}
+
+.registration__btn {
+    align-self: flex-end;
+    width: 175px;
+    height: 35px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50px;
+    padding: 5px 7px;
+    margin-right: 20px;
+    @media (max-width: 750px) {
+        width: 140px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+}
+
+.btn__circle {
+    background-color: --primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: $white-100;
+        & .last-update__arrow path {
+            fill: --primary-color;
+        }
+    }
+}
+
+.describe__p {
+    margin-right: 10px;
+    @media (max-width: 750px) {
+        font-size: 16px;
+    }
+}

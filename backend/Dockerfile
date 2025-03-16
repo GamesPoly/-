@@ -1,23 +1,13 @@
-FROM golang:1.21-alpine
+FROM node:12.13-alpine
 
-EXPOSE 8080
+WORKDIR /app
 
-# .env -> docker-compose -> Dockerfile forwarding
-ARG APP_DIR
-ARG APP_NAME
-ENV APP_DIR ${APP_DIR}
-ENV APP_NAME ${APP_NAME}
+COPY package*.json ./
 
-COPY . ${APP_DIR}
-WORKDIR ${APP_DIR}
-VOLUME ${APP_DIR}
+RUN npm install
 
-# install psql
-RUN apk update
-RUN apk add postgresql-client
-RUN apk add curl
+COPY . .
 
-# fetch github.com/cosmtrek/air
-RUN curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+COPY ./dist ./dist
 
-CMD air --build.cmd "go build -o ${APP_NAME} cmd/main.go" --build.bin "./${APP_NAME}"
+CMD ["npm", "run", "start:dev"]

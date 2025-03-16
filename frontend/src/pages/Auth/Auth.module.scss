@@ -1,0 +1,93 @@
+@import '../../variables';
+.auth__form {
+    text-align: center;
+    background-color: var(--background-detailed);
+    width: 900px;
+    margin: 1% auto;
+    border-radius: 20px;
+    padding: 80px 0px 10px;
+}
+
+.auth__forget__btns {
+    margin: 40px auto;
+    margin-left: 12%;
+    display: flex;
+    align-items: center;
+}
+
+.auth__btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border: 2px solid --primary-color;
+    border-radius: 25px;
+    padding: 5px 7px;
+    margin-right: 20px;
+}
+
+.btn__circle {
+    background-color: --primary-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: $white-100;
+        & .last-update__arrow path {
+            fill: --primary-color;
+        }
+    }
+}
+
+.other__auth__btns {
+    padding: 30px 100px;
+    text-align: left;
+}
+
+p {
+    font-size: 22px;
+}
+
+.btns {
+    padding-top: 40px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    background-image: linear-gradient(
+        90.35deg,
+        #ad7eff 0%,
+        #c29fff 25.72%,
+        #ff9af1 47.25%,
+        #e58ea7 74.18%,
+        #ff5731 100.8%
+    );
+    color: transparent;
+    background-clip: text;
+    width: max-content;
+    margin: 0 auto;
+}
+
+img:not(:first-child) {
+    margin-left: 20px;
+}
+
+.link__registr {
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.link__registr p {
+    padding-top: 20px;
+}
+
+.link__registr h2 {
+    font-size: 32px;
+}

@@ -1,0 +1,58 @@
+@import '@/variables.scss';
+
+.genres-list {
+    margin-bottom: 100px;
+    transition: all 0.3s ease;
+}
+
+.genres-list__body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    transition: all 0.3s ease;
+
+    & li:nth-child(1) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(308, 100%, 80%, 1),
+            hsla(262, 100%, 81%, 1)
+        );
+    }
+    & li:nth-child(2) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(262, 100%, 81%, 1),
+            hsla(308, 100%, 80%, 1)
+        );
+    }
+    & li:nth-child(3) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(262, 100%, 81%, 1),
+            hsla(308, 100%, 80%, 1)
+        );
+    }
+    & li:nth-child(4) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(262, 100%, 81%, 1),
+            hsla(308, 100%, 80%, 1)
+        );
+    }
+    & li:nth-child(5) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(308, 100%, 80%, 1),
+            hsla(343, 63%, 73%, 1)
+        );
+    }
+    & li:nth-child(6) div:first-child {
+        background: linear-gradient(
+            to right,
+            hsla(343, 63%, 73%, 1),
+            hsla(11, 100%, 60%, 1)
+        );
+    }
+}

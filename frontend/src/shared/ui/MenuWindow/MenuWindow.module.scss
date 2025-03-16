@@ -1,0 +1,130 @@
+@import '@/variables.scss';
+.menu-window {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-right: 0;
+    position: fixed;
+    top: 0px;
+    right: calc(min(33.33%, 500px) * -1);
+    width: min(33.33%, 500px);
+    height: calc(100% - 80px);
+    background-color: var(--background-color);
+    transition: all 1.2s ease;
+    border-radius: 12px 0 0 12px;
+    border: 1px solid transparent;
+    overflow: hidden;
+}
+
+.menu-window--open {
+    right: 0;
+    top: 40px;
+    border: 1px solid var(--background-secondary);
+    // margin: 40px 12px;
+}
+
+.menu-window__title {
+    margin-top: 30%;
+    padding-left: 60px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.menu-window__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 60px;
+    margin: 0;
+    gap: 26px;
+}
+
+.menu-window__link {
+    font-weight: 500;
+    font-size: 48px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    transition: all 0.5s ease;
+    &--active {
+        color: var(--text-primary);
+        padding-left: 20px;
+    }
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+.menu-window__number {
+    font-weight: 400;
+    font-size: 14px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 20px;
+    width: fit-content;
+    padding: 4px 8px;
+    text-decoration: none;
+    margin: 0 0 8px;
+}
+
+.menu-window__button {
+    top: 24px;
+    right: 24px;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    transition: all 0.1s ease;
+    width: fit-content;
+    &:hover {
+        opacity: 0.85;
+    }
+
+    &_icon {
+        circle {
+            fill: var(--background-secondary);
+            transition: all 1.3s ease;
+        }
+        path {
+            stroke: var(--text-primary);
+            transition: all 1.3s ease;
+        }
+    }
+}
+
+.menu-window__copyright {
+    position: absolute;
+    bottom: 10px;
+    padding: 0 10px 10px 60px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.menu-window__bg {
+    z-index: -1;
+    position: absolute;
+    user-drag: none;
+    bottom: -200px;
+    left: -180px;
+    transform: scale(0.67) rotate(-6deg);
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+// @media screen and (max-width: 576px) {
+//     .menu-window {
+//         width: min(100%, 500px);
+//         right: calc(min(100%, 500px) * -1);
+
+//     }
+// }

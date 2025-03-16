@@ -1,11 +1,12 @@
 @import 'variables';
-@import "~normalize.css/normalize";
+@import '~normalize.css/normalize';
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
 
 body {
     background: var(--background-color);
     font-family: 'Jost', 'Inter', sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .visually-hidden {
@@ -21,7 +22,21 @@ body {
     overflow: hidden;
 }
 
-h1,h2,h3,h4,h5,h6,p,span,ul {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+ul {
     padding: 0;
     margin: 0;
+}
+
+ul,
+li,
+ol {
+    list-style-type: none;
 }

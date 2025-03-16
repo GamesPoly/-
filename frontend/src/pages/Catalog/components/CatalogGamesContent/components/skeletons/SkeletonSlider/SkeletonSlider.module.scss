@@ -1,0 +1,24 @@
+.ads-slider {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.ads-slider__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 576px) {
+    .ads-slider {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .ads-slider__list {
+        gap: 30px;
+    }
+}

@@ -1,0 +1,84 @@
+@import '@/variables.scss';
+.search {
+    position: relative;
+    margin-left: 2rem;
+}
+.search__field {
+    position: relative;
+}
+.search__error,
+.search__loading {
+    width: 70%;
+    font-size: 20px;
+    text-align: center;
+    color: #adadac;
+    margin-top: 35px;
+}
+.search__results {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    margin-top: 50px;
+    background: var(--background-secondary);
+    padding-block: 10px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    max-height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    min-height: 100px;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #555;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #cacaca;
+        border-radius: 4px;
+    }
+}
+.search__input {
+    min-height: 50px;
+    padding: 0 23px;
+    font-size: 20px;
+    color: var(--text-primary);
+    line-height: 20.9px;
+    border: none;
+    background: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-radius: 25px;
+    min-width: 400px;
+    transition: all 0.5s ease;
+    outline: 1px solid transparent;
+    background: var(--background-secondary);
+
+    &::placeholder {
+        color: var(--text-secondary);
+    }
+}
+
+.search__icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%; /* позиция сверху по вертикали на 50% */
+    transform: translateY(-50%);
+    right: 16px;
+    stroke: var(--text-primary);
+    transition: all 1.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .search {
+        display: none;
+    }
+}

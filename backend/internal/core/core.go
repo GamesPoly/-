@@ -3,8 +3,8 @@ package core
 import (
 	"context"
 	"fmt"
+	"os"
 	"polygames/internal/domain"
-	"polygames/internal/infrastructure/config"
 	"polygames/internal/repository/database"
 	"polygames/internal/repository/database/postgresql"
 )
@@ -21,11 +21,6 @@ type Core interface {
 	UpdateGenre(ctx context.Context, req *domain.UpdateGenreRequest) (*domain.UpdateGenreResponse, error)
 	DeleteGenre(ctx context.Context, req *domain.DeleteGenreRequest) (*domain.DeleteGenreResponse, error)
 
-	CreatePlatform(ctx context.Context, req *domain.CreatePlatformRequest) (*domain.CreatePlatformResponse, error)
-	GetPlatform(ctx context.Context, req *domain.GetPlatformRequest) (*domain.GetPlatformResponse, error)
-	UpdatePlatform(ctx context.Context, req *domain.UpdatePlatformRequest) (*domain.UpdatePlatformResponse, error)
-	DeletePlatform(ctx context.Context, req *domain.DeletePlatformRequest) (*domain.DeletePlatformResponse, error)
-
 	SignIn(ctx context.Context, req *domain.SignInRequest) (*domain.SignInResponse, error)
 	SignUp(ctx context.Context, req *domain.SignUpRequest) (*domain.SignUpResponse, error)
 
@@ -40,7 +35,7 @@ type core struct {
 
 // New returns Core instance.
 func New(ctx context.Context) (Core, error) {
-	db, err := postgresql.NewDriver(ctx, config.Config.DatabaseConnString)
+	db, err := postgresql.NewDriver(ctx, os.Getenv("DATABASE_DSN"))
 	if err != nil {
 		return nil, fmt.Errorf("creating postgresql driver: %w", err)
 	}

@@ -1,0 +1,31 @@
+.for-developers {
+    max-width: 1011px;
+    padding-inline: 50px;
+    margin-inline: auto;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    &__title {
+        text-align: center;
+        font-size: 100px;
+        font-style: normal;
+        font-weight: 500;
+        background: linear-gradient(
+            45deg,
+            #ad7eff,
+            #c29fff,
+            #ff5731,
+            #ff9af1,
+            #ad7eff
+        );
+        animation: gradient 15s ease infinite;
+        background-size: 200% 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    &__text {
+        font-size: 38px;
+        text-align: center;
+        margin-top: 40px;
+    }
+}

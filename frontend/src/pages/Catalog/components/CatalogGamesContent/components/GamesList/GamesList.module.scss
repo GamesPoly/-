@@ -1,0 +1,56 @@
+@import '@/variables.scss';
+
+.games__list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.list__head {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.list__body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 19px;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.games__header {
+    font-size: 2rem;
+}
+
+.games__show {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--text-primary);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .list__body {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .games__header {
+        font-size: 1.2rem;
+        width: 13rem;
+    }
+
+    .games__show {
+        font-size: 1rem;
+    }
+}

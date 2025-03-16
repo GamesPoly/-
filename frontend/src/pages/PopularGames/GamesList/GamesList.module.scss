@@ -1,0 +1,19 @@
+@import '@/variables.scss';
+
+.games-list {
+    margin-bottom: 100px;
+    transition: all 0.3s ease;
+}
+
+.games-list__body {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    &--small {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    }
+    &--big {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    }
+}

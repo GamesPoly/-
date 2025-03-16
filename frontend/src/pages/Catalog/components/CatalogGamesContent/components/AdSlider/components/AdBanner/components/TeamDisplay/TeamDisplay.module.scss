@@ -1,0 +1,69 @@
+.team-display {
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px;
+        padding-inline: 6px 48px;
+        padding-block: 6px;
+        background: #2f2f2f;
+        border-radius: 999px;
+        width: fit-content;
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        justify-content: space-between;
+    }
+
+    &__members {
+        height: fit-content;
+        display: flex;
+        align-items: center;
+    }
+
+    &__team-label,
+    &__team-name {
+        width: fit-content;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.5rem;
+    }
+
+    &__team-label {
+        color: rgba(173, 173, 172, 1);
+    }
+
+    &__member-img {
+        width: 54px;
+        height: 54px;
+    }
+
+    &__member-link {
+        display: inline-block;
+        position: relative;
+        width: 54px;
+        height: 54px;
+        margin-right: -15px;
+        /* Накладываем аватары друг на друга */
+        border-radius: 50%;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background-color: #202020;
+
+        &:hover {
+            margin-right: 0px;
+            margin-left: 5px;
+            z-index: 10; /* Перемещаем аватар выше остальных */
+            transform: scale(
+                1.1
+            ); /* Немного увеличиваем аватар при наведении */
+        }
+
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+}

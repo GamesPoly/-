@@ -1,0 +1,80 @@
+@import '@/variables.scss';
+.collection__body {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 16px;
+    background: var(--background-detailed);
+    padding: 40px;
+    border-radius: 36px;
+}
+.collection__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.collection__caption {
+    display: flex;
+    gap: 40px;
+    align-items: flex-end;
+    //flex-direction: column;
+}
+.collection__box-caption {
+    max-width: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.collection__up-caption {
+    display: flex;
+    //align-self: center;
+    gap: 25px;
+}
+
+.collection__down-caption {
+    display: flex;
+    //align-self: flex-start;
+    //gap: 25px;
+    //margin-left: 72px;
+}
+
+.collection__title {
+    white-space: nowrap;
+    font-size: 66px;
+    font-weight: 500;
+}
+
+.collection__number {
+    font-size: 26px;
+    font-weight: 400;
+    padding-top: 26px;
+}
+
+.collection__desc {
+    font-size: 22px;
+    font-weight: 500;
+    max-width: 416px;
+    margin: 0;
+    padding-bottom: 20px;
+    &--highlight {
+        color: var(--primary-color);
+    }
+}
+
+.collection__cards {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(372px, 1fr));
+    gap: 40px;
+}
+
+.collection__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

@@ -1,0 +1,129 @@
+@import '../../variables';
+
+.registration__wrapper {
+    padding-top: 100px;
+    padding-bottom: 108px;
+}
+
+.registration__form {
+    text-align: center;
+    background-color: var(--background-detailed);
+    width: 874px;
+    margin: 40px auto 40px;
+    border-radius: 20px;
+    padding-top: 100px;
+
+    .registration__form-main {
+        display: flex;
+        justify-content: center;
+
+        .input__fields-block {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 650px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.registration__btns {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.registration__btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    padding: 5px 7px 5px 20px;
+    height: 50px;
+    cursor: pointer;
+
+    &:hover {
+        .btn__circle {
+            background-color: $white-100;
+
+            path {
+                fill: var(--primary-color);
+            }
+        }
+    }
+}
+
+.btn__circle {
+    background-color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    height: 30px;
+    width: 30px;
+    margin-left: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.other__registration__btns {
+    padding: 40px 111px;
+    text-align: left;
+}
+
+.other__line {
+    width: 817px;
+    border-top: 1px solid #aeaeae;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 22px;
+}
+
+.btns {
+    padding-top: 40px;
+    margin-left: 160px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+h1 {
+    text-align: center;
+    background-image: linear-gradient(
+        90.35deg,
+        #ad7eff 0%,
+        #c29fff 25.72%,
+        #ff9af1 47.25%,
+        #e58ea7 74.18%,
+        #ff5731 100.8%
+    );
+    color: transparent;
+    background-clip: text;
+    width: max-content;
+    margin: 0 auto;
+}
+
+img.aside-settings__icon {
+    margin-left: 0;
+}
+
+.to-register-block {
+    text-align: center;
+    margin: 40px 0 0;
+}
+
+.to-register-block .to-register-block__link {
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.to-register-block h2 {
+    font-size: 32px;
+}

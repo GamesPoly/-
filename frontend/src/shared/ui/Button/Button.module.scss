@@ -1,0 +1,10 @@
+.styled-button {
+    background-color: #ff5731;
+    color: #fff;
+    border-radius: 10%;
+    &__arrow {
+        width: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+    }
+}

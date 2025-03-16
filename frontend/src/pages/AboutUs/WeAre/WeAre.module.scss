@@ -1,0 +1,50 @@
+.we-are {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 625px;
+    &__left-side-images {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__top-left-image {
+        position: relative;
+        top: 12%;
+        left: 24%;
+        transform: rotate(11deg);
+        width: 75%;
+        border-radius: 20%;
+    }
+    &__bottom-left-image {
+        position: relative;
+        left: 8%;
+        width: 60%;
+    }
+    &__text {
+        font-size: 24px;
+        line-height: 34.68px;
+        align-self: center;
+        text-align: center;
+        width: 90%;
+        margin-inline: auto;
+    }
+    &__right-side-images {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__top-right-image {
+        position: relative;
+        top: 8%;
+        left: 20px;
+        transform: rotate(4deg);
+        width: 60%;
+        border-radius: 20%;
+    }
+    &__bottom-right-image {
+        position: relative;
+        top: 170px;
+        right: 70px;
+    }
+}

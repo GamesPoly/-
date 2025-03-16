@@ -1,0 +1,55 @@
+@import '@/variables.scss';
+.switcher-genres {
+    cursor: pointer;
+    border-radius: 33px;
+    gap: 8px;
+    border: 1px solid var(--background-extra);
+    background: transparent;
+    padding: 0 0 0 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 356px;
+    &--active {
+        border: 1px solid transparent;
+        background: var(--background-extra);
+    }
+    &:hover {
+        transition: all 0.2s ease;
+        border: 1px solid var(--text-secondary);
+    }
+}
+
+.switcher-genres__text {
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--text-primary);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    &:hover {
+        transition: all 0.2s ease;
+        opacity: 0.85;
+    }
+}
+
+.switcher-genres__arrow {
+    margin: 8px;
+    min-width: 50px;
+    min-height: 50px;
+    &:hover {
+        & path {
+            transition: all 0.2s ease;
+            fill: var(--primary-color);
+        }
+        & circle {
+            transition: all 0.2s ease;
+            fill: var(--text-primary);
+        }
+    }
+}

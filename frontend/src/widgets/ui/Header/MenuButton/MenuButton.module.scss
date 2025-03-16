@@ -1,0 +1,23 @@
+@import '@/variables.scss';
+.menu-button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: all 1.3s;
+
+    width: 50px;
+    &:hover {
+        opacity: 0.85;
+    }
+
+    &__icon {
+        circle {
+            fill: var(--background-secondary);
+            transition: all 1.3s;
+        }
+        path {
+            stroke: var(--text-primary);
+            transition: all 1.3s;
+        }
+    }
+}

@@ -3,9 +3,6 @@ package main
 import (
 	"database/sql"
 	"errors"
-	"fmt"
-	"polygames/internal/infrastructure/config"
-
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
@@ -13,8 +10,7 @@ import (
 )
 
 func main() {
-	fmt.Println(config.Config.DatabaseConnString)
-	db, err := sql.Open("postgres", config.Config.DatabaseConnString)
+	db, err := sql.Open("postgres", "postgres://user:password@localhost:5432/yourdb?sslmode=disable")
 	if err != nil {
 		panic(err)
 	}
@@ -25,7 +21,7 @@ func main() {
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
-		"file:///migrations",
+		"file://path/to/your/migrations",
 		"postgres", driver,
 	)
 	if err != nil {

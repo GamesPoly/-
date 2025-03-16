@@ -1,0 +1,52 @@
+@import '@/variables.scss';
+
+.game-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 600px;
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+
+.game-banner__main {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    align-items: center;
+    border-radius: 42px;
+    justify-content: space-between;
+    max-height: 500px;
+    min-height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: bottom 50% left 15%;
+    background-size: contain;
+    padding: 55px 25px;
+}
+
+.game-banner {
+    &__prev,
+    &__next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 55px;
+        height: 55px;
+        z-index: 10;
+        color: var(--text-primary);
+        background-color: var(--background-extra);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.game-banner__prev {
+    left: 22px;
+}
+.game-banner__next {
+    right: 22px;
+}

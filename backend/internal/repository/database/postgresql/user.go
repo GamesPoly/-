@@ -10,7 +10,7 @@ import (
 )
 
 func (d *driver) GetUser(ctx context.Context, req *domain.GetUserRequest) (*domain.User, error) {
-	row := d.conn.QueryRow(ctx, `select id, username, email, gender, date_of_birth, created_at, updated_at, role
+	row := d.conn.QueryRow(ctx, `select id, username, email, gender, created_at, updated_at, role
                                      from users
                                      where id = $1`, req.UserId)
 
@@ -20,7 +20,6 @@ func (d *driver) GetUser(ctx context.Context, req *domain.GetUserRequest) (*doma
 		&user.Username,
 		&user.Email,
 		&user.Gender,
-		&user.DateOfBirth,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 		&user.Role,
@@ -36,7 +35,7 @@ func (d *driver) GetUser(ctx context.Context, req *domain.GetUserRequest) (*doma
 
 func (d *driver) GetUserByLogin(ctx context.Context, login string) (*domain.User, error) {
 	var user domain.User
-	err := d.conn.QueryRow(ctx, `select id, username, email, password, gender, date_of_birth, created_at, updated_at, role
+	err := d.conn.QueryRow(ctx, `select id, username, email, password, gender, created_at, updated_at, role
                                      from users
                                      where lower(username) = $1 or lower(email) = $1`, login).Scan(
 		&user.ID,
@@ -44,7 +43,6 @@ func (d *driver) GetUserByLogin(ctx context.Context, login string) (*domain.User
 		&user.Email,
 		&user.Password,
 		&user.Gender,
-		&user.DateOfBirth,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 		&user.Role,
@@ -71,13 +69,11 @@ func (d *driver) DeleteUser(ctx context.Context, req *domain.DeleteUserRequest) 
 
 func (d *driver) SignUp(ctx context.Context, req *domain.SignUpRequest) (int64, error) {
 	var id int64
-	err := d.conn.QueryRow(ctx, `insert into users(username, email, password, gender, date_of_birth, role) 
-									 values($1, $2, $3, $4, $5, $6) returning id`,
+	err := d.conn.QueryRow(ctx, `insert into users(username, email, password, role) 
+									 values($1, $2, $3, $4) returning id`,
 		req.Username,
 		req.Email,
 		req.Password,
-		req.Gender,
-		req.DateOfBirth,
 		domain.UserRoleUser,
 	).Scan(&id)
 	if err != nil {

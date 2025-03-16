@@ -1,0 +1,32 @@
+@import '@/variables.scss';
+
+.genres-list__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+.genres-list__card__top {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.genres-list__card-cover {
+    object-position: center;
+    object-fit: cover;
+}
+
+.genres-list__card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 17px;
+}
+
+.genres-list__card-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+}

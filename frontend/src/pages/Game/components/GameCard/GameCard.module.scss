@@ -1,0 +1,19 @@
+@import '../../Game.module';
+
+.card {
+    margin-bottom: 100px;
+    padding: 40px;
+    background-color: var(--background-detailed);
+    border-radius: 42px;
+
+    &__block {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 40px;
+    }
+
+    &__header {
+        font-size: 96px;
+        margin-left: 0;
+    }
+}

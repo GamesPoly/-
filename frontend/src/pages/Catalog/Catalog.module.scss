@@ -1,0 +1,22 @@
+@import '@/variables.scss';
+
+.catalog {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog__wrapper {
+    max-width: 1540px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 50px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 576px) {
+    .catalog {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column-reverse;
+    }
+}

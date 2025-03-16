@@ -2,7 +2,3 @@
 .tmp
 *.log
 .DS_Store
-polygames
-db
-tmp/
-cmd/docs

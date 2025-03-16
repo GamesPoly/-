@@ -4,18 +4,14 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/dgrijalva/jwt-go"
+	"golang.org/x/crypto/bcrypt"
 	"polygames/internal/domain"
 	"polygames/internal/domain/errcore"
 	"polygames/internal/infrastructure/config"
-	"polygames/internal/infrastructure/logger"
 	"polygames/internal/repository/database"
 	"time"
-
-	"github.com/dgrijalva/jwt-go"
-	"golang.org/x/crypto/bcrypt"
 )
-
-const userKey = "user_id"
 
 func (c *core) SignIn(ctx context.Context, req *domain.SignInRequest) (*domain.SignInResponse, error) {
 	user, err := c.repo.GetUserByLogin(ctx, req.Login)
@@ -27,7 +23,6 @@ func (c *core) SignIn(ctx context.Context, req *domain.SignInRequest) (*domain.S
 	}
 
 	if !user.CheckPassword(req.Password) {
-		logger.Logger.Info().Msg("passwords do not match")
 		return nil, errcore.InvalidCredentialsError
 	}
 
@@ -39,14 +34,8 @@ func (c *core) SignIn(ctx context.Context, req *domain.SignInRequest) (*domain.S
 	if err != nil {
 		return nil, errcore.NewInternalError(err)
 	}
-	sessionID, csrfToken, err := NewSession(user.ID)
-	if err != nil {
-		return nil, errcore.NewInternalError(err)
-	}
 
 	return &domain.SignInResponse{
-		SessionID:    sessionID,
-		CSRFToken:    csrfToken,
 		AccessToken:  accessToken,
 		RefreshToken: refreshToken,
 	}, nil
@@ -162,8 +151,4 @@ func (c *core) HashPassword(password string) (string, error) {
 		return "", err
 	}
 	return string(bytes), nil
-}
-
-func NewContext(ctx context.Context, ac *domain.User) context.Context {
-	return context.WithValue(ctx, userKey, ac)
 }
