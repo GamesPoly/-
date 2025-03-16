@@ -8,7 +8,7 @@ import weAre4 from '../../../shared/assets/we-are-team-photo.png'
 const WeAre = () => {
     return (
         <section className={styles['we-are']}>
-            <div className={styles['we-are__left-side-images']}>
+            <div className={styles['we-are__left-side-icons']}>
                 <img
                     src={weAre1}
                     alt="Team photo"
