@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Home.module.scss'
 import Hero from './Hero/Hero'
+import Courses from './Courses/Courses'
 import Collection from './Collection/Collection'
 import Genre from './Genre/Genre'
 import Functions from './Functions/Functions'
@@ -13,7 +14,7 @@ const Home = () => {
         <main className={styles['home__wrapper']}>
             <Hero />
             <News />
-            {/* курсы */}
+            <Courses />
             <Activities />
             <ProgramExample />
             <Collection />

@@ -1,0 +1,90 @@
+@import '@/variables.scss';
+
+.courses {
+    margin-top: 100px;
+}
+
+.courses__header {
+    width: 880px;
+}
+
+.courses__header_up {
+    font-size: 68px;
+}
+
+.courses__header_down {
+    font-size: 68px;
+    text-align: right;
+    margin-bottom: 28px;
+}
+
+.courses__descryption-container {
+    position: relative;
+    height: 538px;
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    overflow: hidden;
+}
+
+.courses__descryption {
+    box-sizing: border-box;
+    border-radius: 16px;
+    width: 750px;
+    background-repeat: no-repeat;
+    padding: 152px 20px 20px;
+    background-color: red;
+}
+
+.courses__descryption-card {
+    box-sizing: border-box;
+    width: 480px;
+    height: 366px;
+    padding: 20px 24px;
+    background-color: var(--background-extra);
+    border-radius: 8px;
+}
+
+.courses__descryption-card h3 {
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+.courses__descryption-card p {
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 1.2;
+    text-wrap: balance;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.link {
+    margin: 0 !important;
+}
+
+.courses__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 664px;
+    height: 620px;
+    z-index: 5;
+}
+
+.gradient {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        var(--background-color) 100%
+    );
+    width: 663px;
+    height: 100px;
+}
