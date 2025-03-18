@@ -11,6 +11,16 @@
     left: 0;
     right: 0;
     background-color: var(--background-color);
+
+    &__nav {
+        display: flex;
+        gap: 56px;
+        &__link {
+            font-size: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+    }
 }
 
 .hidden {

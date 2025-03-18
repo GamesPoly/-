@@ -7,7 +7,7 @@ import CatalogGamesContent from './components/CatalogGamesContent/CatalogGamesCo
 function Catalog() {
     return (
         <CatalogFiltersProvider>
-            <SkeletonTheme baseColor="#202020" highlightColor="#fff">
+            <SkeletonTheme baseColor="#e3e3e1" highlightColor="#fff">
                 <main className={styles['catalog']}>
                     <div className={styles['catalog__wrapper']}>
                         <CatalogGamesContent />

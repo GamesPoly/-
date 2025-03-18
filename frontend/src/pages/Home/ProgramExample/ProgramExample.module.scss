@@ -1,0 +1,155 @@
+@use '@/variables' as vars;
+
+.program {
+    margin-top: 100px;
+
+    &__header {
+        @include vars.adaptiv-font(56, 18);
+    }
+    &__firstLine::after {
+        content: 'Бакалавриат';
+        position: relative;
+        top: -0.6em;
+        margin-left: 1em;
+        display: inline-block;
+        background-color: var(--accent-color);
+        padding: 0.2em 0.5em;
+        border-radius: 40px;
+        font-weight: 400;
+        transform: rotateZ(-2deg);
+        @include vars.adaptiv-font(28, 12);
+    }
+    &__secondLine {
+        margin-left: min(12vw, 220px);
+        color: var(--accent-color);
+    }
+    &__thirdLine {
+        margin-left: min(5vw, 90px);
+    }
+
+    &__content {
+        margin-top: 40px;
+        display: flex;
+    }
+
+    &__card {
+        box-sizing: border-box;
+        padding: 30px;
+        background-color: var(--background-detailed);
+        max-width: 500px;
+        border-radius: 24px;
+        height: fit-content;
+    }
+
+    &__cardHeader {
+        font-weight: 500;
+        @include vars.adaptiv-font(28, 12);
+    }
+
+    &__cardText {
+        max-height: 220px;
+        margin-top: 0.8em;
+        @include vars.adaptiv-font(20, 12);
+    }
+}
+
+.registration__btn {
+    margin-top: 20px;
+    align-self: flex-end;
+    width: 175px;
+    height: 35px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 50px;
+    padding: 5px 5px;
+    margin-right: 20px;
+    cursor: pointer;
+    &:hover {
+        .btn__circle {
+            background-color: vars.$white-100;
+            path {
+                fill: var(--primary-color);
+            }
+        }
+    }
+    @media (max-width: 750px) {
+        width: 140px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+}
+
+.btn__circle {
+    background-color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    height: 35px;
+    width: 35px;
+    transition: all 0.15s ease;
+}
+
+.describe__p {
+    margin-right: 10px;
+    font-weight: 400;
+    font-size: 24px;
+    @media (max-width: 750px) {
+        font-size: 16px;
+    }
+}
+
+.faqContainer {
+    margin-left: 100px;
+}
+
+.title {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.faqList {
+    list-style: none;
+    padding: 0;
+    list-style: none; /* Отказываемся от стандартных маркеров */
+}
+
+.faqItem {
+    margin-bottom: 10px;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: 10px;
+    text-align: left;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.answer {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.arrow {
+    width: 1em;
+    height: 1em;
+    padding: 0.2em;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    margin-left: 15px;
+}
