@@ -3,22 +3,19 @@ import { NavLink } from 'react-router-dom'
 import styles from './Sidebar.module.scss'
 import Star from '../../../shared/assets/decorate-star-mini.svg'
 
-// Интерфейс для пропсов компонента Sidebar
+type Section = { id: number; name: string }
+
 interface SidebarProps {
-    activeSection: string
-    setActiveSection: (section: string) => void // функция для смены активной секции
+    sections: Section[]
+    activeSectionId: number
+    setActiveSectionId: (section: number) => void
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-    activeSection,
-    setActiveSection,
+    sections,
+    activeSectionId,
+    setActiveSectionId,
 }) => {
-    const sections = [
-        'Основная информация',
-        'Изображения продукта',
-        'Файлы игры',
-    ]
-
     return (
         <div className={styles['post-form__sidebar']}>
             <img
@@ -28,15 +25,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
             />
             {sections.map((section) => (
                 <button
-                    key={section}
-                    onClick={() => setActiveSection(section)}
+                    key={section.id}
+                    onClick={() => setActiveSectionId(section.id)}
                     className={
-                        activeSection === section
+                        activeSectionId === section.id
                             ? styles['sidebar__btn_active']
                             : styles['sidebar__btn']
                     }
                 >
-                    {section}
+                    {section.name}
                 </button>
             ))}
         </div>
