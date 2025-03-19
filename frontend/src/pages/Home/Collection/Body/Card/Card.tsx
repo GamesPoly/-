@@ -8,6 +8,7 @@ import arrows from '../../../../../shared/assets/arrows.svg'
 import IconBlock from './CardBlocks/IconBlock'
 import icon1 from '../../../../../shared/assets/test-icon1.png'
 import icon2 from '../../../../../shared/assets/test-icon2.png'
+import icon3 from '../../../../../shared/assets/test-icon3.png'
 import icon4 from '../../../../../shared/assets/test-icon4.png'
 
 const CardCollection = ({ version }: any) => {
@@ -20,19 +21,16 @@ const CardCollection = ({ version }: any) => {
                         text={'Играй в уникальные игры первым'}
                     />
                     <IconBlock
-                        reverse
-                        alignEnd
                         srcIcon={icon2}
-                        text={'Находи друзей и общайся с единомышленниками'}
+                        text={'Находи друзей и общайся с единомышленниками'}
                     />
                     <IconBlock
-                        srcIcon={icon2}
+                        srcIcon={icon3}
                         text={
                             'Загружай свои игры, делая свой вклад в мир гейминга'
                         }
                     />
                     <IconBlock
-                        reverse
                         srcIcon={icon4}
                         text={
                             'Найди талантливых соавторов или команду для своего проекта'

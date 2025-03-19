@@ -1008,7 +1008,7 @@
 
 .icon-block {
     display: flex;
-    justify-content: space-between;
+    gap: 28px;
 
     &--reverse {
         flex-direction: row-reverse;
