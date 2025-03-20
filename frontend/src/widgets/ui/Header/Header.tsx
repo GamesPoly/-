@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../../shared/assets/logo.svg'
+import polyLogo from '../../../shared/assets/poly-logo.svg'
 import MenuButton from './MenuButton/MenuButton'
 import styles from './Header.module.scss'
 
@@ -18,14 +19,26 @@ const Header: React.FC<HeaderProps> = ({ openMenu, showHeader }) => {
         >
             <div className={styles.header__wrapper}>
                 <div className={styles.header__details}>
-                    <Link to="/" className={styles.header__link}>
-                        <img
-                            src={logo}
-                            alt="PolyGames Logo Image"
-                            className={styles.header__logo}
-                        />
-                    </Link>
+                    <div className={styles.logos}>
+                        <Link to="/" className={styles.header__link}>
+                            <img
+                                src={polyLogo}
+                                alt="PolyGames Logo Image"
+                                className={styles.header__logo}
+                            />
+                        </Link>
+                        <Link to="/" className={styles.header__link}>
+                            <img
+                                src={logo}
+                                alt="PolyGames Logo Image"
+                                className={styles.header__logo}
+                            />
+                        </Link>
+                    </div>
                     <div className={styles.header__nav}>
+                        <Link className={styles.header__nav__link} to="/news">
+                            Новости
+                        </Link>
                         <Link className={styles.header__nav__link} to="/games">
                             Каталог игр
                         </Link>
@@ -34,15 +47,12 @@ const Header: React.FC<HeaderProps> = ({ openMenu, showHeader }) => {
                         </Link>
                         <Link
                             className={styles.header__nav__link}
-                            to="/post-form"
-                        >
-                            Публикация
-                        </Link>
-                        <Link
-                            className={styles.header__nav__link}
                             to="/about-us"
                         >
                             О нас
+                        </Link>
+                        <Link className={styles.header__nav__link} to="/auth">
+                            Личный кабинет
                         </Link>
                     </div>
                     <MenuButton clickButton={openMenu} />
